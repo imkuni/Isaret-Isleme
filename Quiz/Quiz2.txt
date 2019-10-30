@@ -1,0 +1,99 @@
+% 1- % 1- % 1- % 1- % 1- % 1- % 1- % 1- % 1- % 1- % 1- % 1- % 1- % 1- % 1- % 1- 
+filename = 'laughter.wav';
+[y,Fs] = audioread('laughter.wav');
+audiowrite(filename,y,Fs);
+
+% a)
+samples = [1,2*Fs];
+[y,Fs] = audioread(filename,samples);
+sound(y,Fs);
+
+% b)
+samples = [1,1*Fs];
+[y,Fs] = audioread(filename,samples);
+Fs=Fs/2
+sound(y,Fs);
+Fs=Fs*2
+
+% c)
+samples = [1,5*Fs];
+[y,Fs] = audioread(filename,samples);
+Fs=Fs*2
+sound(y,Fs);
+Fs=Fs/2
+
+% d)
+samples = [1,5*Fs];
+[y,Fs] = audioread(filename,samples);
+Fs=Fs*5
+sound(y,Fs);
+Fs=Fs/5
+
+
+% 2- % 2- % 2- % 2- % 2- % 2- % 2- % 2- % 2- % 2- % 2- % 2- % 2- % 2- % 2- % 2- 
+samples = [1,2*Fs];
+% a)
+xlabel('Zaman')
+ylabel('Sinyal')
+[~,f,t,p] = spectrogram(y,100,80,100,Fs);
+[fridge,~,lr] = tfridge(p,f);
+hold on
+plot3(t,fridge,abs(p(lr)),'LineWidth',4)
+legend({'Fs=Fs','Fs=Fs/2','Fs=Fs*2','Fs=Fs*5'},'Location','northeast')
+hold off
+
+% b)
+Fs=Fs/2;
+[~,f,t,p] = spectrogram(y,100,80,100,Fs);
+[fridge,~,lr] = tfridge(p,f);
+hold on
+plot3(t,fridge,abs(p(lr)),'LineWidth',4)
+legend({'Fs=Fs','Fs=Fs/2','Fs=Fs*2','Fs=Fs*5'},'Location','northeast')
+hold off
+Fs=Fs*2;
+
+% c)
+Fs=Fs*2;
+[~,f,t,p] = spectrogram(y,100,80,100,Fs);
+[fridge,~,lr] = tfridge(p,f);
+hold on
+plot3(t,fridge,abs(p(lr)),'LineWidth',4)
+legend({'Fs=Fs','Fs=Fs/2','Fs=Fs*2','Fs=Fs*5'},'Location','northeast')
+hold off
+Fs=Fs/2;
+
+% d)
+Fs=Fs*5;
+[~,f,t,p] = spectrogram(y,100,80,100,Fs);
+[fridge,~,lr] = tfridge(p,f);
+hold on
+plot3(t,fridge,abs(p(lr)),'LineWidth',4)
+legend({'Fs=Fs','Fs=Fs/2','Fs=Fs*2','Fs=Fs*5'},'Location','northeast')
+hold off
+Fs=Fs/5;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

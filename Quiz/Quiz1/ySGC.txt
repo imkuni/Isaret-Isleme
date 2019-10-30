@@ -1,0 +1,52 @@
+yeSifir=0;
+teTurevSifir=-5;
+root_vektor = [1 3 2];
+r=roots(root_vektor);
+lambda1 = r(1); lambda2 = r(2);
+
+syms c1 c2 t;
+y_foo = y0(t,c1,c2,lambda1,lambda2); t=0;
+eqns = [y_foo(1)== yeSifir, y_foo(2)== teTurevSifir];
+
+eqn1=subs(eqns(1));
+eqn2=subs(eqns(2));
+eqns(1)=eqn1;
+eqns(2)=eqn2;
+S = solve(eqns,[c1 c2]), S.c1, S.c2
+
+formatSpec = 'ySGC(t) = (%4.1f*exp(%4.1f*t)) + (%4.1f*exp(%4.1f*t))';
+fprintf(formatSpec,S.c1,lambda2,S.c2,lambda1)
+
+
+%function f = y0(t,c1,c2,lambda1,lambda2)
+%    syms y(t);
+%    y(t) = c1*exp(lambda1*t)+c2*exp(lambda2*t);
+%    f = c1*exp(lambda1*t)+c2*exp(lambda2*t);
+%    f(end+1) = diff(y(t))
+%end
+
+yeSifir=2;
+teTurevSifir=16.78;
+root_vektor = [1 3 2];
+r=roots(root_vektor);
+lambda1 = r(1); lambda2 = r(2);
+
+syms c1 c2 t;
+y_foo = y0(t,c1,c2,lambda1,lambda2); t=0;
+eqns = [y_foo(1)== yeSifir, y_foo(2)== teTurevSifir];
+
+eqn1=subs(eqns(1));
+eqn2=subs(eqns(2));
+eqns(1)=eqn1;
+eqns(2)=eqn2;
+S = solve(eqns,[c1 c2]), S.c1, S.c2
+
+formatSpec = 'ySGC(t) = (%4.1f*exp(%4.1f*t)) + (%4.1f*exp(%4.1f*t))';
+fprintf(formatSpec,S.c1,lambda2,S.c2,lambda1)
+
+%function f = y0(t,c1,c2,lambda1,lambda2)
+%    syms y(t);
+%    y(t) = c1*exp(lambda1*t)+c2*exp(lambda2*t);
+%    f = c1*exp(lambda1*t)+c2*exp(lambda2*t);
+%    f(end+1) = diff(y(t))
+%end
